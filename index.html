@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PulsePlay — a modern responsive music player">
+  <title>PulsePlay | Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="PulsePlay home"><span class="brand-mark">▶</span> Pulse<span>Play</span></a>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+        <button class="icon-btn mobile-only" id="libraryBtn" aria-label="Open library">☰</button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="side-title">YOUR SPACE</div>
+      <button class="side-link active" data-view="home">⌂ <span>Home</span></button>
+      <button class="side-link" data-view="favorites">♡ <span>Favorites</span><b id="favCount">0</b></button>
+      <button class="side-link" data-view="queue">☷ <span>Queue</span></button>
+      <div class="side-title">PLAYLISTS</div>
+      <button class="side-link playlist-link" data-playlist="Focus">● <span>Focus</span></button>
+      <button class="side-link playlist-link" data-playlist="Chill">● <span>Chill</span></button>
+      <button class="side-link playlist-link" data-playlist="Energy">● <span>Energy</span></button>
+      <div class="sidebar-tip">
+        <strong>Keyboard ready</strong>
+        <p>Space play/pause · ← → seek · ↑ ↓ volume</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL PLAYER</p>
+          <h1>Good music.<br><span>Better focus.</span></h1>
+          <p>Discover a clean, responsive player built with HTML, CSS and JavaScript.</p>
+        </div>
+        <div class="hero-disc"><div class="disc-hole"></div></div>
+      </section>
+
+      <section class="section-head">
+        <div><p class="eyebrow">LIBRARY</p><h2 id="viewTitle">Featured tracks</h2></div>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search tracks..." autocomplete="off"></label>
+      </section>
+
+      <section class="track-grid" id="trackGrid" aria-live="polite"></section>
+      <div class="empty-state hidden" id="emptyState">
+        <div>♫</div><h3>No tracks found</h3><p>Try another search or switch your library view.</p>
+      </div>
+    </main>
+
+    <div class="player">
+      <div class="now-playing">
+        <div class="mini-cover" id="miniCover">♫</div>
+        <div class="now-text"><strong id="nowTitle">Select a track</strong><span id="nowArtist">PulsePlay</span></div>
+        <button class="heart-btn" id="playerFav" aria-label="Favorite current track">♡</button>
+      </div>
+
+      <div class="player-center">
+        <div class="controls">
+          <button class="control" id="shuffleBtn" aria-label="Shuffle">⤨</button>
+          <button class="control" id="prevBtn" aria-label="Previous">⏮</button>
+          <button class="play-btn" id="playBtn" aria-label="Play">▶</button>
+          <button class="control" id="nextBtn" aria-label="Next">⏭</button>
+          <button class="control" id="repeatBtn" aria-label="Repeat">↻</button>
+        </div>
+        <div class="timeline">
+          <span id="currentTime">0:00</span>
+          <input id="seekBar" type="range" min="0" max="100" value="0" aria-label="Seek">
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="volume">
+        <span>🔊</span><input id="volumeBar" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+      </div>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
